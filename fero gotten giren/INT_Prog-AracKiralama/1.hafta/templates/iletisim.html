@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}İletişim - Aslan Car Rental{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>İletişim</h1>
+        <hr>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm p-4">
+                    <h5 class="card-title mb-3">Bize Ulaşın</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label for="ad" class="form-label">Adınız</label>
+                            <input type="text" class="form-control" id="ad" placeholder="Adınız">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-posta Adresiniz</label>
+                            <input type="email" class="form-control" id="email" placeholder="E-posta adresiniz">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mesaj" class="form-label">Mesajınız</label>
+                            <textarea class="form-control" id="mesaj" rows="5" placeholder="Mesajınız"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gönder <i class="fas fa-paper-plane ms-2"></i></button>
+                    </form>
+                    <hr class="mt-4">
+                    <h6>İletişim Bilgilerimiz</h6>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Akşemsettin Mah. Angara/Sincan</p>
+                    <p><i class="fas fa-phone me-2"></i> Telefon: +90 535 060 06 06</p>
+                    <p><i class="fas fa-envelope me-2"></i> E-posta: info@aslancarrental.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

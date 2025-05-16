@@ -1,0 +1,156 @@
+.car-card {
+    border: 1px solid #dee2e6; 
+    border-radius: 0.5rem; 
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); 
+    position: relative;
+  }
+  .car-card img {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    max-height: 200px;
+    object-fit: cover;
+  }
+  .rental-form-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000; 
+  }
+  .rental-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px; 
+  }
+  .rental-form h5 {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #007bff;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; 
+    color: #343a40;
+  }
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da; 
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+  }
+  .btn-rent-submit {
+    background-color: #ff0000; /* logoya uygun */
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+  }
+  .btn-rent-submit:hover {
+    background-color: #ff0000;
+  }
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #6c757d;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  .car-features {
+    padding: 15px;
+    background-color: #f8f9fa; 
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+  .car-features h6 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #6c757d;
+  }
+  .car-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .car-features ul li {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: #495057;
+  }
+  .car-features ul li i {
+    margin-right: 5px;
+  }
+  .rent-button {
+    background-color: #e74c3c; /* logoya uygun */
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 80%;
+    margin: 10px auto; /* Ortada duruyo */
+    text-align: center;
+    text-decoration: none;
+  }
+  .rent-button:hover {
+    background-color: #218838; /* Üzerine gelince değiş */
+  }
+  .rental-conditions {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    text-align: center; /* Her şey ortalı olsun. */
+  }
+  .rental-conditions h6 {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    color: #6c757d;
+  }
+  .rental-conditions ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .rental-conditions ul li {
+    font-size: 0.75rem;
+    margin-bottom: 3px;
+    color: #495057;
+  }
+  .rental-conditions ul li i {
+    margin-right: 3px;
+  }
+  .card-body.text-center {
+    padding: 1rem;
+  }
+  .card-body.text-center h5 {
+    margin-bottom: 0.5rem;
+  }
+  .card-body.text-center p {
+    margin-bottom: 0.75rem;
+  }

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araç Yönetimi -ASLAN Car Rental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+  
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif; 
+            color: #555; 
+            margin: 0;
+        }
+
+        .admin-container {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .navbar-top {
+            background-color: #fff;
+            color: #333;
+            padding: 10px 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .navbar-top h1 {
+            font-size: 1.5em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info i {
+            margin-right: 5px;
+            font-size: 1.2em;
+            color: #777;
+        }
+
+        .sidebar {
+            background-color: #333; 
+            color: #eee; 
+            width: 200px;
+            flex-shrink: 0;
+            position: fixed;
+            top: 46px; 
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            padding-top: 15px;
+            border-right: 1px solid #555;
+        }
+
+        .sidebar h2 {
+            padding: 10px 15px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: normal; 
+            color: #f00;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 8px 15px;
+            color: #ddd;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar li a:hover {
+            background-color: #555;
+            color: #fff;
+            border-left-color: #f00;
+        }
+
+        .sidebar li a.active {
+            background-color: #f00;
+            color: #fff;
+            font-weight: bold;
+            border-left-color: #f00;
+        }
+
+        .sidebar li a i {
+            margin-right: 8px;
+            color: #aaa;
+        }
+
+        .sidebar .logout-btn {
+            background-color: #f00;
+            color: #fff;
+            border-radius: 5px;
+            margin: 15px;
+            padding: 8px 15px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .sidebar .logout-btn:hover {
+            background-color: #d00;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 15px;
+            margin-left: 200px; 
+            padding-top: 61px; 
+        }
+
+        .page-header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header h1 {
+            font-size: 1.8em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .page-header > div {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .btn-success {
+            background-color: green;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .btn-success:hover {
+            background-color: darkgreen;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .table thead th {
+            background-color: #eee;
+            color: #333;
+            font-weight: bold;
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table tbody td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .btn-sm {
+            padding: 5px 8px;
+            font-size: 0.9em;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 7px;
+            font-size: 0.8em;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .bg-success {
+            background-color: green;
+        }
+
+        .bg-warning {
+            background-color: orange;
+            color: black !important;
+        }
+
+        .bg-danger {
+            background-color: red;
+        }
+
+        /* Filtreleme Alanı */
+        .mb-3 .row {
+            align-items: center;
+        }
+
+        .form-label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-select {
+            width: auto;
+            padding: 6px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        /* Sayfalama */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination .page-link {
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            text-decoration: none;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #f00;
+            border-color: #f00;
+            color: white;
+        }
+
+        .pagination .page-link:focus {
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <div class="navbar-top">    
+            <h1>ASLAN Car Rental - Yönetim Paneli</h1>
+            <div class="user-info">
+                <i class="bi bi-person-circle"></i>
+                <span id="current-user">Admin </span>
+            </div>
+        </div>
+        <div class="sidebar">
+            <h2>Yönetim Menüsü</h2>
+            <ul id="admin-menu">
+                <li><a href="/admin/panel"><i class="bi bi-speedometer me-2"></i> Ana Sayfa </a></li>
+                <li class="active"><a href="/arac/liste"><i class="bi bi-car-front-fill me-2"></i> Araç İşlemleri</a></li>
+                <li><a href="/kiralamalar/listele"><i class="bi bi-calendar-check-fill me-2"></i> Kiralama Takvimi</a></li>
+                <li><a href="/musteriler/listele"><i class="bi bi-people-fill me-2"></i> Müşteri Listesi</a></li>
+                <li><a href="/raporlar/kiralanan_araclar"><i class="bi bi-bar-chart-line-fill me-2"></i> Raporlar</a></li>
+                <li><a href="/ayarlar"><i class="bi bi-gear-fill me-2"></i> Ayarlar </a></li>
+                <li class="mt-4"><a href="/admin/cikis" class="logout-btn"><i class="bi bi-box-arrow-left me-2"></i> Çıkış</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="page-header">
+                <h1>Araç Yönetimi </h1>
+                <div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Araç Ara..." aria-label="Araç Ara">
+                        <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i> Git</button>
+                    </div>
+                </div>
+            </div>
+            <section class="mb-3">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="markaFiltre" class="form-label">Marka:</label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select" id="markaFiltre">
+                            <option value="">Hepsi</option>
+                            <option value="Fiat">Fiat (İtalyan)</option>
+                            <option value="Renault">Renault (Fransız)</option>
+                            <option value="Ford">Ford (Amerikan)</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label for="durumFiltre" class="form-label">Durum:</label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select" id="durumFiltre">
+                            <option value="">Farketmez</option>
+                            <option value="Aktif"><span class="badge bg-success">Hazır</span></option>
+                            <option value="Kirada"><span class="badge bg-warning text-dark">Kirada (Yok Şu An)</span></option>
+                            <option value="Bakımda"><span class="badge bg-danger">Tamirde</span></option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <section class="vehicle-list">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Marka</th>
+                            <th>Model</th>
+                            <th>Yıl</th>
+                            <th>Plaka</th>
+                            <th>Yakıt</th>
+                            <th>Vites</th>
+                            <th>Durum</th>
+                            <th>İşlemler </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Fiat</td>
+                            <td>Egea</td>
+                            <td>2023</td>
+                            <td>FER 1506</td>
+                            <td>Dizel</td>
+                            <td>Manuel</td>
+                            <td><span class="badge bg-success">Aktif </span></td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-primary" title="Düzenle"><i class="bi bi-pencil-fill"></i></a>
+                                <a href="#" class="btn btn-sm btn-danger" title="Sil"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Renault</td>
+                            <td>Clio</td>
+                            <td>2022</td>
+                            <td>HAT 1101</td>
+                            <td>Benzin</td>
+                            <td>Otomatik</td>
+                            <td><span class="badge bg-warning text-dark">Kirada (Beklemede)</span></td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-primary" title="Düzenle"><i class="bi bi-pencil-fill"></i></a>
+                                <a href="#" class="btn btn-sm btn-danger" title="Sil"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ford</td>
+                            <td>Focus</td>
+                            <td>2021</td>
+                            <td>ASL 0101</td>
+                            <td>Dizel</td>
+                            <td>Manuel</td>
+                            <td><span class="badge bg-danger">Bakımda (Problem Var)</span></td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-primary" title="Düzenle"><i class="bi bi-pencil-fill"></i></a>
+                                <a href="#" class="btn btn-sm btn-danger" title="Sil"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <nav aria-label="Sayfalama">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a class="page-link">Önceki</a></li>
+                    <li class="page-item active"><a class="page-link">1</a></li>
+                    <li class="page-item"><a class="page-link">2</a></li>
+                    <li class="page-item"><a class="page-link">3</a></li>
+                    <li class="page-item"><a class="page-link">Sonraki</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

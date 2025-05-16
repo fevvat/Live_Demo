@@ -1,0 +1,229 @@
+.carousel-item img {
+    max-height: 380px;
+    object-fit: cover;
+}
+
+.carousel-inner {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+:root {
+    --bs-primary: #e74c3c; /* Ana renk (kırmızı tonu) */
+    --bs-secondary: #34495e; /* İkincil renk (gri tonu) */
+    --bs-warning: #f1c40f; /* Uyarı rengi (sarı) */
+    --bs-body-bg: #ecf0f1; /* Arka plan rengi */
+    --bs-body-color: #2c3e50; /* Metin rengi */
+}
+
+body {
+    font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .fw-bold, .navbar-brand {
+    font-family: sans-serif;
+}
+
+.navbar-light .navbar-brand {
+    color: var(--bs-primary);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--bs-secondary);
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--bs-primary);
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+.btn-outline-primary {
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+.navbar-nav .btn-outline-primary.giris-link {
+    color: #ff0000; /* Mavi renk */
+    border-color: #007bff;
+}
+
+.navbar-nav .btn-outline-primary.giris-link:hover {
+    background-color: transparent; /* Arka planı transparan yap */
+    color: var(--bs-primary); /* Fare üzerine gelince kırmızı yap */
+}
+
+.btn-warning {
+    background-color: var(--bs-warning);
+    border-color: var(--bs-warning);
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #daa520;
+    border-color: #daa520;
+}
+
+.hero h1 {
+    color: var(--bs-primary);
+}
+
+.card-title {
+    color: var(--bs-secondary);
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.bg-primary {
+    background-color: var(--bs-primary) !important;
+}
+
+.text-secondary {
+    color: var(--bs-secondary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--bs-secondary) !important;
+}
+
+.hero-search {
+    background-image: url('/static/resimler/turkiye-arac-kiralama.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-search::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.hero-search .container {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-search-inner {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 1.5rem;
+}
+
+.hero-search-inner h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-search-inner label {
+    font-size: 0.85rem;
+}
+
+.hero-search-inner .form-control-lg,
+.hero-search-inner .form-select-lg,
+.hero-search-inner .btn-lg {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+    height: auto;
+}
+
+.card-img-top {
+    max-height: 160px;
+    object-fit: contain;
+    padding: 0.8rem;
+    margin-bottom: 0.4rem;
+    align-self: center;
+}
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-body.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+}
+
+.card-title.fw-bold {
+    margin-bottom: 0.4rem;
+}
+
+.card-text.text-muted.small {
+    margin-bottom: 0.6rem;
+}
+
+.card-body.text-center > .btn {
+    margin-top: 0.4rem;
+}
+
+.card-body.text-center > div {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.btn-success {
+    background-color: #27ae60;
+    border-color: #27ae60;
+    color: white;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-weight: normal;
+    font-size: 0.8rem;
+}
+
+.btn-success:hover {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+    color: white !important;
+}
+
+.fixed-phone-icon {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--bs-primary);
+    color: white;
+    border-radius: 60%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: background-color 0.2s ease;
+}
+
+.fixed-phone-icon:hover {
+    background-color: #d35400;
+    color: white;
+}
